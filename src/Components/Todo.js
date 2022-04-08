@@ -82,7 +82,7 @@ export default function Todo() {
       title: title,
       description: description,
       user_id: userId,
-      state: todoState,
+      todoState: todoState,
     };
 
     setTodoList([...todoList, todoObj]);
