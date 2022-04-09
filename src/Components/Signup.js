@@ -6,6 +6,7 @@ import { v4 as uuid } from 'uuid';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
+
 export default function Signup() {
   const unique_id = uuid();
   const small_id = unique_id.slice(0, 8);
@@ -15,6 +16,8 @@ export default function Signup() {
   const [password, setPassword] = useState('');
 const [ isRegisterd, setIsRegisterd] = useState(false)
   const [errors, setErrors] = useState({ userName: '', password: '' });
+  let navigate = useNavigate();
+  
 
   const handleChange = (e, id) => {
     if (id === 'userName') {
@@ -39,11 +42,14 @@ const [ isRegisterd, setIsRegisterd] = useState(false)
      if (isRegisterd) {
        Swal.fire({
          title: `successfully  Registerd please login`,
-       }).then(function () {
+       })
+         .then(function () {
          let url = window.location.origin;
-         console.log(url)
-         window.location = url + '/login';
+         
+         window.location = url + 'login';
+       
        });
+         navigate('/login');
      }
     setUserName('');
     setPassword('');
