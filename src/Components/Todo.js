@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { FiEdit } from 'react-icons/fi';
 import { AiOutlineDelete } from 'react-icons/ai';
+import { MdDelete } from 'react-icons/md';
 
 export default function Todo() {
   const unique_id = uuid();
@@ -254,18 +255,18 @@ localStorage.setItem('todos_list', JSON.stringify(filterTodo));
           <option>select</option>
           <option value="sortATZ">sortATZ</option>
           <option value="sortZTA">sortZTA</option>
-         
         </select>
       </div>
-
 
       <div className="todos_container">
         {filterTodo &&
           filterTodo.map((el, index) => (
             <div className="display_single_todo" key={el.id}>
               <p>{el.title}</p>
-              <p>{el.description}</p>
-              <button className="state_btn">{el.todoState}</button>
+              <p style={{ maxWidth: '200px' }}>{el.description}</p>
+              <button className="state_btn" style={{ maxWidth: '200px' }}>
+                {el.todoState}
+              </button>
               <Link to="">
                 <FiEdit
                   onClick={() => updateTodo(el)}
@@ -277,7 +278,7 @@ localStorage.setItem('todos_list', JSON.stringify(filterTodo));
                   }}
                 />
               </Link>
-              <AiOutlineDelete
+              <MdDelete
                 onClick={() => removeTodo(el)}
                 style={{
                   color: 'red',

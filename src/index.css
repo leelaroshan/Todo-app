@@ -59,13 +59,13 @@ code {
 .todos_container{
    margin: 10px;
 
-  margin: 5% 30%;
+  margin: 5% ;
 }
 .display_single_todo{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   background-color: lightcyan;
   color: #f2f5f9;
   color:#0e7c85;
@@ -74,6 +74,7 @@ code {
   margin: 5px 5px;
   border-radius: 5px;
   padding: 20px;
+
 }
 
 .btn-primary{

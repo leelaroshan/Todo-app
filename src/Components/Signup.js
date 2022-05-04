@@ -28,6 +28,9 @@ const [ isRegisterd, setIsRegisterd] = useState(false)
     }
   };
 
+  const arrayLength = usersList.length;
+  console.log(arrayLength);
+  
   const onSubmit = (e) => {
     e.preventDefault();
     let userObj = {
@@ -36,21 +39,28 @@ const [ isRegisterd, setIsRegisterd] = useState(false)
       user_id: small_id,
     };
 
-    setUsersList([...usersList, userObj]);
-     setIsRegisterd(true);
 
-     if (isRegisterd) {
-       Swal.fire({
-         title: `successfully  Registerd please login`,
-       })
-         .then(function () {
-         let url = window.location.origin;
-         
-         window.location = url + 'login';
-       
-       });
-         navigate('/login');
-     }
+    setUsersList([...usersList, userObj]);
+    const currentLength = usersList.length;
+    console.log(currentLength)
+ 
+
+    if (currentLength > arrayLength) {
+        setIsRegisterd(true);
+        localStorage.setItem('is_new_user', isRegisterd);
+
+      Swal.fire({
+        title: `successfully  Registerd please login`,
+      });
+      //    .then(function () {
+
+      //    let url = window.location.origin;
+
+      //    window.location = url + 'login';
+
+      //  });
+      navigate('/login');
+    }
     setUserName('');
     setPassword('');
    
